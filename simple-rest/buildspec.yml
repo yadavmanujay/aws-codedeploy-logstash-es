@@ -3,6 +3,7 @@ phases:
   pre_build:
     commands:
       - echo entering pre-build phase...
+      - cd simple-rest/
   build:
     commands:
       - echo starting build...
