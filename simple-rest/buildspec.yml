@@ -1,12 +1,17 @@
 version: 0.2
 
 phases:
-
-pre-build:
-- echo Building...
-	commands:
-	- mvn clean install war:exploded
-post-build:
-- echo moving exploded war to root
-	commands:
-	- mvn -v target/simple-rest-* .
+	pre-build:
+		commands:
+		- echo entering pre-build phase...
+	build:
+		commands:
+		-echo starting build...
+		- mvn clean prepare-package war:exploded
+	post-build:
+		commands:
+		- echo moving exploded war to root
+		- mvn -v target/deploy .
+artifacts:
+	files:
+	- deploy/**/*
