@@ -1,0 +1,12 @@
+version: 0.2
+
+phases:
+
+pre-build:
+- echo Building...
+	commands:
+	- mvn clean install war:exploded
+post-build:
+- echo moving exploded war to root
+	commands:
+	- mvn -v target/simple-rest-* .
